@@ -16,7 +16,8 @@ namespace Trivia_Stage1.UI
         //Place here any state you would like to keep during the app life time
         //For example, player login details...
          private TriviaContext Db = new TriviaContext();
-        Player p;
+         Player p;
+         
         //Implememnt interface here
         public bool ShowLogin()
         {
@@ -120,18 +121,47 @@ namespace Trivia_Stage1.UI
             return (false);
         }
 
-        public void ShowAddQuestion()
+        public void ShowAddQuestion() //שי
         {
             Console.WriteLine("Not implemented yet! Press any key to continue...");
             Console.ReadKey(true);
         }
 
-        public void ShowPendingQuestions()
+        public void ShowPendingQuestions() //נועה
         {
-            Console.WriteLine("Not implemented yet! Press any key to continue...");
-            Console.ReadKey(true);
+            // לקבל שאלה 
+            Console.WriteLine("What is the question?");
+            char ch;
+            ch = '6';
+            foreach(Question q in Db.Questions)
+            {
+                if (q.StatusId == 1)
+                {
+                    Console.WriteLine(q.Ranswer);
+                    Console.WriteLine(q.Wanswer1);
+                    Console.WriteLine(q.Wanswer2);
+                    Console.WriteLine(q.Wanswer3);
+
+                    Console.WriteLine("enter 1 to approve, enter 2 to reject, enter 3 to skip");
+                    while (ch =='6')
+                    {
+                        ch = Console.ReadKey().KeyChar;
+                        if (ch == 1)
+                        {
+                            q.StatusId = 2;
+                        }
+                        if (ch == 2)
+                        {
+                            q.StatusId = 3;
+                        }
+                        else
+                            ch = '6';
+                    }
+
+                }
+            }
         }
-        public void ShowGame()
+        public void ShowGame()//זיו
         {
             Console.WriteLine("Not implemented yet! Press any key to continue...");
             Console.ReadKey(true);
